@@ -1,7 +1,7 @@
 from mastodon import Mastodon
 import json, random, threading
 
-delay = 3600
+delay = 1200
 
 #get tlds from text file with all generic tlds
 tlds = []
@@ -10,9 +10,6 @@ with open("tlds.txt", 'r') as f:
 
 #get words, courtesy of darius kazemi's corpora project https://github.com/dariusk/corpora
 words = []
-with open("common.json", 'r') as f:
-	words += (json.loads(f.read())["commonWords"])
-
 with open("strange.json", 'r') as f:
 	words += (json.loads(f.read())["words"])
 
