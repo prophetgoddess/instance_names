@@ -74,7 +74,6 @@
 .catholic
 .center
 .ceo
-.cfd
 .channel
 .chat
 .cheap
