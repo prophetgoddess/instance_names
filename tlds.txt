@@ -1,10 +1,3 @@
-.com
-.org
-.net
-.int
-.edu
-.gov
-.mil
 .academy
 .accountant
 .accountants
@@ -224,13 +217,11 @@
 .help
 .here
 .hiphop
-.hiv
 .hockey
 .holdings
 .holiday
 .homegoods
 .homes
-.homesense
 .horse
 .host
 .hosting
@@ -308,8 +299,6 @@
 .now
 .off
 .one
-.ong
-.onl
 .online
 .open
 .organic
@@ -325,10 +314,8 @@
 .photo
 .photography
 .photos
-.physio
 .pics
 .pictures
-.pid
 .pin
 .pink
 .pizza
@@ -347,7 +334,6 @@
 .properties
 .property
 .protection
-.qpon
 .racing
 .radio
 .read
