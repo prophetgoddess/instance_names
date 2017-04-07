@@ -2,7 +2,7 @@ from mastodon import Mastodon
 import json, random, threading, os
 
 min_delay = 600
-max_delay = 1200
+max_delay = 1800
 
 #get tlds from text file with all generic tlds
 tlds = []
