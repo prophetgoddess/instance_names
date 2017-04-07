@@ -189,7 +189,6 @@
 .fund
 .furniture
 .fyi
-.g
 .gallery
 .game
 .games
@@ -242,7 +241,6 @@
 .kim
 .kitchen
 .land
-.latino
 .law
 .lawyer
 .lease
