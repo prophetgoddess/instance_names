@@ -1,5 +1,5 @@
 from mastodon import Mastodon
-import json, random, threading
+import json, random, threading, os
 
 min_delay = 600
 max_delay = 1200
@@ -11,14 +11,11 @@ with open("tlds.txt", 'r') as f:
 
 #get words, courtesy of darius kazemi's corpora project https://github.com/dariusk/corpora
 words = []
-with open("strange.json", 'r') as f:
-	words += (json.loads(f.read())["words"])
-
-with open("nouns.json", 'r') as f:
-	words += (json.loads(f.read())["nouns"])
-
-with open("blackle.txt", 'r') as f:
-	words += f.read().split('\n')
+for file in os.listdir('./corpus'):
+	if file.endswith(".json"):
+		print("loading " + file)
+		with open(os.path.join("./corpus", file), 'r') as f:
+			words += json.loads(f.read())["words"]
 
 #get login info from secrets.json
 secrets = {}
@@ -28,8 +25,8 @@ with open('secrets.json', 'r') as f:
 mastodon = Mastodon(client_id=secrets["id"], client_secret=secrets["secret"], access_token=secrets["access_token"], api_base_url="https://cybre.space")
 
 def make_post():
-	tld = random.choice(tlds)
-	word = random.choice(words)
+	tld = random.choice(tlds).lower()
+	word = random.choice(words).lower()
 
 	name = "{}{}".format(word, tld)
 	
