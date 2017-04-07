@@ -1,7 +1,8 @@
 from mastodon import Mastodon
 import json, random, threading
 
-delay = 1200
+min_delay = 600
+max_delay = 1200
 
 #get tlds from text file with all generic tlds
 tlds = []
@@ -15,6 +16,9 @@ with open("strange.json", 'r') as f:
 
 with open("nouns.json", 'r') as f:
 	words += (json.loads(f.read())["nouns"])
+
+with open("blackle.txt", 'r') as f:
+	words += f.read().split('\n')
 
 #get login info from secrets.json
 secrets = {}
@@ -32,7 +36,7 @@ def make_post():
 	print("posting {}".format(name))
 
 	mastodon.status_post(name, visibility="unlisted")
-	threading.Timer(delay, make_post).start()
+	threading.Timer(random.randint(min_delay, max_delay), make_post).start()
 
 
 make_post()
