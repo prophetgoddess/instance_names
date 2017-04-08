@@ -45,6 +45,7 @@ def get_available_domain():
 
 
 def make_post():
+	name = get_available_domain()
 
 	print("posting {}".format(name))
 
