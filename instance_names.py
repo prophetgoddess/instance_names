@@ -15,7 +15,7 @@ for file in os.listdir('./corpus'):
 	if file.endswith(".json"):
 		print("loading " + file)
 		with open(os.path.join("./corpus", file), 'r') as f:
-			words += json.loads(f.read())["words"]
+			words.append(json.loads(f.read())["words"])
 
 #get login info from secrets.json
 secrets = {}
@@ -26,7 +26,7 @@ mastodon = Mastodon(client_id=secrets["id"], client_secret=secrets["secret"], ac
 
 def make_post():
 	tld = random.choice(tlds).lower()
-	word = random.choice(words).lower()
+	word = random.choice(random.choice(words)).lower()
 
 	name = "{}{}".format(word, tld)
 	
