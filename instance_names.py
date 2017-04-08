@@ -1,4 +1,6 @@
 from mastodon import Mastodon
+from pythonwhois import get_whois
+from pythonwhois.shared import WhoisException
 import json, random, threading, os
 
 min_delay = 600
@@ -24,12 +26,26 @@ with open('secrets.json', 'r') as f:
 
 mastodon = Mastodon(client_id=secrets["id"], client_secret=secrets["secret"], access_token=secrets["access_token"], api_base_url="https://cybre.space")
 
-def make_post():
-	tld = random.choice(tlds).lower()
-	word = random.choice(random.choice(words)).lower()
 
-	name = "{}{}".format(word, tld)
-	
+def get_available_domain():
+	for attempt in range(10):
+		tld = random.choice(tlds).lower()
+		word = random.choice(random.choice(words)).lower()
+		name = "{}{}".format(word, tld)
+
+		try:
+			whois = get_whois(name)
+		except WhoisException:
+			continue
+
+		if not whois.get('id'):
+			return name
+	else:
+		raise RuntimeError('tried too many times')
+
+
+def make_post():
+
 	print("posting {}".format(name))
 
 	mastodon.status_post(name, visibility="unlisted")
