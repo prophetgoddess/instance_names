@@ -1,1 +1,8 @@
 secrets.json
+pip-selfcheck.json
+lib64
+pyvenv.cfg
+/bin
+/include
+/lib
+/share
