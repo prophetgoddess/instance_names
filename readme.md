@@ -2,7 +2,7 @@ Mastodon bot that posts name ideas for new mastodon instances. Made with help fr
 
 [Currently hosted on cybre.space.](https://cybre.space/@instance_names)
 
-Made by [@lycaon@icosahedron.website](https://icosahedron.website/@lycaon)
+Made by [@lycaon@witches.town.website](https://witches.town/@lycaon)
 
 ## Contribute
 
