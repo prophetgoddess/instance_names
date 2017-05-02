@@ -29,19 +29,23 @@ mastodon = Mastodon(client_id=secrets["id"], client_secret=secrets["secret"], ac
 
 def get_available_domain():
 	for attempt in range(10):
-		tld = random.choice(tlds).lower()
-		word = random.choice(random.choice(words)).lower()
-		name = "{}{}".format(word, tld)
-
 		try:
-			whois = get_whois(name)
-		except WhoisException:
-			continue
+			tld = random.choice(tlds).lower()
+			word = random.choice(random.choice(words)).lower()
+			name = "{}{}".format(word, tld)
 
-		if not whois.get('id'):
-			return name
+			try:
+				whois = get_whois(name)
+			except WhoisException:
+				continue
+
+			if not whois.get('id'):
+				return name
+		except Exception as e:
+			pass
 	else:
-		raise RuntimeError('tried too many times')
+		print('tried too many times')
+		return "{}{}".format(randomchoice(random.choice(words)).lower(), random.choice(tlds).lower())
 
 
 def make_post():
